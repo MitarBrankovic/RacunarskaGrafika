@@ -55,9 +55,9 @@ namespace AssimpSample
         private AssimpScene m_scene_holder;
 
 
-        private uint[] m_textures;
-        private string[] m_textureFiles = { "..//..//imgs//bricks.jpg"};
-        private enum TextureObjects { Brick = 0};
+        private uint[] m_textures = new uint[5];
+        private string[] m_textureFiles = { "..//..//imgs//bricks.jpg", "..//..//imgs//brick.jpg", "..//..//imgs//asphalt.jpg", "..//..//imgs//whiteAsphalt.jpg", "..//..//imgs//walls.jpg" };
+        private enum TextureObjects { Bricks = 0, Brick, Asphalt, WhiteAsphalt, Walls};
         private readonly int m_textureCount = Enum.GetNames(typeof(TextureObjects)).Length;
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace AssimpSample
             gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_REPEAT);
 
 
-            /*gl.GenTextures(m_textureCount, m_textures);
+            gl.GenTextures(m_textureCount, m_textures);
             for (int i = 0; i < m_textureCount; ++i)
             {
                 // Pridruzi teksturu odgovarajucem identifikatoru
@@ -237,7 +237,7 @@ namespace AssimpSample
                 image.Dispose();
             }
 
-            gl.Disable(OpenGL.GL_TEXTURE_2D);*/
+            gl.Disable(OpenGL.GL_TEXTURE_2D);
 
 
             m_scene.LoadScene();
@@ -329,16 +329,22 @@ namespace AssimpSample
             gl.End();
             gl.PopMatrix();
 
+            gl.Enable(OpenGL.GL_TEXTURE_2D);
 
             //prva ulica
             gl.PushMatrix();
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Asphalt]);
             gl.Translate(0.0f, 0.0f, 120f);
             gl.Begin(OpenGL.GL_QUADS);
             gl.Normal(0.0f, 1.0f, 0.0f);
             gl.Color(0.5f, 0.5f, 0.5f);
+            gl.TexCoord(1.0f, 1.0f);
             gl.Vertex(-55f, -149.8f, 30f);   //dole desno
+            gl.TexCoord(1.0f, 0.0f);
             gl.Vertex(-105f, -149.8f, 30f);    //dole levo
+            gl.TexCoord(0.0f, 0.0f);
             gl.Vertex(-105f, -149.8f, -220f); //gore levo
+            gl.TexCoord(0.0f, 1.0f);
             gl.Vertex(-55f, -149.8f, -220f);  //gore desno
             gl.End();
             gl.PopMatrix();
@@ -346,31 +352,38 @@ namespace AssimpSample
 
             //druga ulica
             gl.PushMatrix();
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Asphalt]);
             gl.Translate(0.0f, 0.0f, 120f);
             gl.Begin(OpenGL.GL_QUADS);
             gl.Normal(0.0f, 1.0f, 0.0f);
             gl.Color(0.5f, 0.5f, 0.5f);
-            gl.Vertex(59f, -149.8f, 30f);   //dole desno
+            gl.TexCoord(1.0f, 1.0f);
+            gl.Vertex(93f, -149.8f, 30f);   //dole desno
+            gl.TexCoord(1.0f, 0.0f);
             gl.Vertex(-55f, -149.8f, 30f);    //dole levo
+            gl.TexCoord(0.0f, 0.0f);
             gl.Vertex(-55f, -149.8f, -25f); //gore levo
-            gl.Vertex(59f, -149.8f, -25f);  //gore desno
+            gl.TexCoord(0.0f, 1.0f);
+            gl.Vertex(93f, -149.8f, -25f);  //gore desno
             gl.End();
             gl.PopMatrix();
 
+            gl.Disable(OpenGL.GL_TEXTURE_2D); 
         }
 
 
         public void DrawWalls(OpenGL gl)
         {
             gl.Enable(OpenGL.GL_TEXTURE_2D);
-            
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Bricks]);
+
             // Cube klasa koja nam sluzi za iscvanje zidova
             Cube cube = new Cube();
 
-            //prednji zid
+            //levi gornji zid
             gl.PushMatrix();
-            //gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Brick]);
-            gl.Color(0.43f, 0.55f, 0.63f);
+            gl.Normal(1f, 0f, 0f);
+            gl.Color(1.0f, 1.0f, 1.0f);  //gl.Color(0.43f, 0.55f, 0.63f);
             gl.Translate(60.0f, -134.9f, 38.0f);
             gl.Rotate(0.0f, 90.0f, 0.0f);
             gl.Scale(58.0f, 15.0f, 1.0f);
@@ -378,54 +391,67 @@ namespace AssimpSample
             gl.PopMatrix();
 
 
-            //prednji zid2
+            //levi donji zid
             gl.PushMatrix();
-            gl.Color(0.43f, 0.55f, 0.63f);
+            gl.Normal(1f, 0f, 0f);
+            gl.Color(1.0f, 1.0f, 1.0f);
             gl.Translate(60.0f, -134.9f, 213.0f);
             gl.Rotate(0.0f, 90.0f, 0.0f);
             gl.Scale(48.0f, 15.0f, 1.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
 
-            //zadnji zid
+            //desni zid
             gl.PushMatrix();
-            gl.Color(0.43f, 0.55f, 0.63f);
+            gl.Normal(1f, 0f, 0f);
+            gl.Color(1.0f, 1.0f, 1.0f);
             gl.Translate(220.0f, -134.9f, 121f);
             gl.Rotate(0.0f, 90.0f, 0.0f);
             gl.Scale(142.0f, 15.0f, 1.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
 
+            //gornji zid
             gl.PushMatrix();
-            gl.Color(0.43f, 0.55f, 0.63f);
+            gl.Normal(1f, 0f, 0f);
+            gl.Color(1.0f, 1.0f, 1.0f);
             gl.Translate(140.0f, -134.9f, -20.0f);
             gl.Rotate(0.0f, 0.0f, 0.0f);
             gl.Scale(80.5f, 15.0f, 1.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
 
+            //donji zid
             gl.PushMatrix();
-            gl.Color(0.43f, 0.55f, 0.63f);
+            gl.Normal(1f, 0f, 0f);
+            gl.Color(1.0f, 1.0f, 1.0f);
             gl.Translate(140.0f, -134.9f, 262.0f);
             gl.Rotate(0.0f, 0.0f, 0.0f);
             gl.Scale(80.5f, 15.0f, 1.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
 
+            gl.Disable(OpenGL.GL_TEXTURE_2D);
+
         }
 
         public void DrawConstruction(OpenGL gl)
         {
+            gl.Enable(OpenGL.GL_TEXTURE_2D);
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.WhiteAsphalt]);
+
             // Cube klasa koja nam sluzi za iscvanje zidova
             Cube cube = new Cube();
 
             //Sredisnji zid
             gl.PushMatrix();
-            gl.Color(0f, 0f, 0.4f);
+            gl.Color(1.0f, 1.0f, 1.0f);     //0 0 0.4 plava
             gl.Translate(140.0f, -78.5f, 120.0f);
             gl.Scale(50.0f, 60.0f, 110.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
+
+            gl.Disable(OpenGL.GL_TEXTURE_2D);
         }
 
         public void DrawRamp(OpenGL gl)

@@ -136,6 +136,7 @@
     <Content Include="AssimpLib\AssimpNet.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="imgs\whiteAsphalt.jpg" />
     <Resource Include="imgs\asphalt.jpg" />
     <Resource Include="imgs\brick.jpg" />
     <Resource Include="imgs\bricks.jpg" />
