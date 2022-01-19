@@ -108,11 +108,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="3D Models\Duck\duck.dae" />
-    <None Include="3D Models\Duck\Thumbs.db" />
-    <None Include="3D Models\Touareg\Touareg.3DS">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="3D Models\Truck\camion jugete.mtl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -132,9 +127,6 @@
     <None Include="Dependencies\SharpGL.WPF.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="3D Models\Duck\duckCM.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="AssimpLib\Assimp32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -144,6 +136,9 @@
     <Content Include="AssimpLib\AssimpNet.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="imgs\asphalt.jpg" />
+    <Resource Include="imgs\brick.jpg" />
+    <Resource Include="imgs\bricks.jpg" />
     <Resource Include="imgs\floor.jpg" />
     <Resource Include="imgs\walls.jpg" />
   </ItemGroup>

@@ -163,3 +163,28 @@ C:\Users\Brankovic\Desktop\Vezbe4Kamion\AssimpSample\AssimpSample\obj\x86\Debug\
 C:\Users\Brankovic\Desktop\Vezbe4Kamion\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.csproj.CopyComplete
 C:\Users\Brankovic\Desktop\Vezbe4Kamion\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.exe
 C:\Users\Brankovic\Desktop\Vezbe4Kamion\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.pdb
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\AssimpLib\Assimp32.dll
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\AssimpLib\Assimp64.dll
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\AssimpLib\AssimpNet.dll
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck\camion jugete.mtl
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck\camion jugete.obj
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\AssimpSample.exe.config
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\AssimpSample.exe
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\AssimpSample.pdb
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\AssimpNet.dll
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\SharpGL.dll
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\SharpGL.SceneGraph.dll
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\SharpGL.WPF.dll
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\MainWindow.baml
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\App.g.cs
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample_Content.g.cs
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample_MarkupCompile.cache
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.g.resources
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.Properties.Resources.resources
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.csproj.GenerateResource.cache
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.csproj.CoreCompileInputs.cache
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.csproj.CopyComplete
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.exe
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.pdb
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.csprojAssemblyReference.cache

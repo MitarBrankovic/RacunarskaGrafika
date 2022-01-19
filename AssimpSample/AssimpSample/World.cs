@@ -54,6 +54,12 @@ namespace AssimpSample
         private AssimpScene m_scene;
         private AssimpScene m_scene_holder;
 
+
+        private uint[] m_textures;
+        private string[] m_textureFiles = { "..//..//imgs//bricks.jpg"};
+        private enum TextureObjects { Brick = 0};
+        private readonly int m_textureCount = Enum.GetNames(typeof(TextureObjects)).Length;
+
         /// <summary>
         ///	 Ugao rotacije sveta oko X ose.
         /// </summary>
@@ -183,6 +189,56 @@ namespace AssimpSample
             gl.Enable(OpenGL.GL_CULL_FACE);
             gl.Enable(OpenGL.GL_DEPTH_TEST);
 
+            //TACKASTA SVETLOST
+            gl.Enable(OpenGL.GL_COLOR_MATERIAL);
+            gl.ColorMaterial(OpenGL.GL_FRONT, OpenGL.GL_AMBIENT_AND_DIFFUSE);
+
+            float[] light0pos = new float[] { 400.0f, 2000.0f, 120.0f, 1.0f };
+            float[] light0ambient = new float[] { 1.0f, 1.0f, 0.8f, 1f };
+            float[] light0diffuse = new float[] { 1.0f, 1.0f, 0.8f, 1.0f };
+            gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_POSITION, light0pos);
+            gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_SPOT_CUTOFF, 180.0f);      //Tackasto
+            gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_AMBIENT, light0ambient);
+            gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_DIFFUSE, light0diffuse); 
+            gl.Enable(OpenGL.GL_LIGHTING);
+            gl.Enable(OpenGL.GL_LIGHT0);
+            gl.Enable(OpenGL.GL_NORMALIZE);
+            //I DALJE SVETLOST
+
+            //TEKSTURE
+            gl.Enable(OpenGL.GL_TEXTURE_2D);
+            gl.TexEnv(OpenGL.GL_TEXTURE_ENV, OpenGL.GL_TEXTURE_ENV_MODE, OpenGL.GL_MODULATE);
+
+            //Ucitaj slike i kreiraj teksture
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MIN_FILTER, OpenGL.GL_NEAREST);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MAG_FILTER, OpenGL.GL_NEAREST);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, OpenGL.GL_REPEAT);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_REPEAT);
+
+
+            /*gl.GenTextures(m_textureCount, m_textures);
+            for (int i = 0; i < m_textureCount; ++i)
+            {
+                // Pridruzi teksturu odgovarajucem identifikatoru
+                gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[i]);
+
+                // Ucitaj sliku i podesi parametre teksture
+                Bitmap image = new Bitmap(m_textureFiles[i]);
+                // rotiramo sliku zbog koordinantog sistema opengl-a
+                image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                Rectangle rect = new Rectangle(0, 0, image.Width, image.Height);
+                // RGBA format (dozvoljena providnost slike tj. alfa kanal)
+                BitmapData imageData = image.LockBits(rect, System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                                                      System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+                gl.Build2DMipmaps(OpenGL.GL_TEXTURE_2D, (int)OpenGL.GL_RGBA8, image.Width, image.Height, OpenGL.GL_BGRA, OpenGL.GL_UNSIGNED_BYTE, imageData.Scan0);
+
+                image.UnlockBits(imageData);
+                image.Dispose();
+            }
+
+            gl.Disable(OpenGL.GL_TEXTURE_2D);*/
+
 
             m_scene.LoadScene();
             m_scene.Initialize();
@@ -193,6 +249,8 @@ namespace AssimpSample
             distance = 0.0f;
 
         }
+
+
 
 
 
@@ -304,15 +362,28 @@ namespace AssimpSample
 
         public void DrawWalls(OpenGL gl)
         {
+            gl.Enable(OpenGL.GL_TEXTURE_2D);
+            
             // Cube klasa koja nam sluzi za iscvanje zidova
             Cube cube = new Cube();
 
             //prednji zid
             gl.PushMatrix();
+            //gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Brick]);
             gl.Color(0.43f, 0.55f, 0.63f);
-            gl.Translate(60.0f, -134.9f, 121.0f);
+            gl.Translate(60.0f, -134.9f, 38.0f);
             gl.Rotate(0.0f, 90.0f, 0.0f);
-            gl.Scale(142.0f, 15.0f, 1.0f);
+            gl.Scale(58.0f, 15.0f, 1.0f);
+            cube.Render(gl, RenderMode.Render);
+            gl.PopMatrix();
+
+
+            //prednji zid2
+            gl.PushMatrix();
+            gl.Color(0.43f, 0.55f, 0.63f);
+            gl.Translate(60.0f, -134.9f, 213.0f);
+            gl.Rotate(0.0f, 90.0f, 0.0f);
+            gl.Scale(48.0f, 15.0f, 1.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
 
