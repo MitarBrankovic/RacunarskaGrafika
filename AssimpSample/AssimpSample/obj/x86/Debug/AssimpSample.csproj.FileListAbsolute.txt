@@ -188,3 +188,25 @@ C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\D
 C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.exe
 C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.pdb
 C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\obj\x86\Debug\AssimpSample.csprojAssemblyReference.cache
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\faun_stw.mtl
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\faun_stw.obj
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\motor1.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\bumber.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\flagge.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\kaba.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\kabl.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\kf.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\loescher.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\rad_hf.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\rad_p.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\rad_vf.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\rahmen.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\rrad.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\tank.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\verdeck.jpg
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\detail.tga
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\detail_bw.tga
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\gitter_bw.tga
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\licht.tga
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\Tools.tga
+C:\Users\Brankovic\Desktop\RacunarskaGrafika\AssimpSample\AssimpSample\bin\Debug\3D Models\Truck2\Window.tga

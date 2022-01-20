@@ -188,7 +188,7 @@ namespace AssimpSample
             this.m_scene = new AssimpScene(scenePath, sceneFileName, gl);
             this.m_width = width;
             this.m_height = height;
-            this.m_scene_holder = new AssimpScene(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "3D Models\\Truck"), "camion jugete.obj", gl);
+            this.m_scene_holder = new AssimpScene(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "3D Models\\Truck2"), "faun_stw.obj", gl);
         }
 
         /// <summary>
@@ -317,10 +317,13 @@ namespace AssimpSample
         {
             gl.PushMatrix();
             gl.Translate(-80f, -149.8f, -20f);
-            gl.Scale(100f, 100f, 100f);
+            gl.Rotate(2.0f, 20.0f, 0.0f);
+            gl.Scale(0.06f, 0.06f, 0.06f);
+            //gl.Rotate(m_xRotation, 0.0f, 50.0f, 0.0f);
             gl.FrontFace(OpenGL.GL_CW);
             m_scene_holder.Draw();
             gl.PopMatrix();
+
         }
 
         public void DrawText(OpenGL gl)
@@ -328,6 +331,7 @@ namespace AssimpSample
             gl.Viewport(m_width - 200, 0, m_width, m_height);
             gl.PushMatrix();
             gl.LoadIdentity();
+            gl.DrawText3D("", 0, 0, 0, "");
             gl.DrawText(0, 130, 1.0f, 0.0f, 0.0f, "Verdana Bold", 14, "Predmet: Racunarska grafika");
             gl.DrawText(0, 100, 1.0f, 0.0f, 0.0f, "Verdana Bold", 12, "Sk.god: 2021 / 22.");
             gl.DrawText(0, 70, 1.0f, 0.0f, 0.0f, "Verdana Bold", 14, "Ime: Mitar");
@@ -484,6 +488,7 @@ namespace AssimpSample
             Cube cube = new Cube();
 
             gl.PushMatrix();
+            gl.Normal(1f, 0f, 0f);
             gl.Color(0.5f, 0f, 0f);
             gl.Translate(0.0f, -139.9f, 91.0f);
             gl.Scale(3.0f, 10.0f, 3.0f);
@@ -491,6 +496,7 @@ namespace AssimpSample
             gl.PopMatrix();
 
             gl.PushMatrix();
+            gl.Normal(1f, 0f, 0f);
             gl.Color(0.5f, 0f, 0f);
             gl.Translate(0.0f, -139.9f, 155.0f);
             gl.Scale(3.0f, 10.0f, 3.0f);
@@ -500,6 +506,7 @@ namespace AssimpSample
             Cylinder precka = new Cylinder();
 
             gl.PushMatrix();
+            gl.Normal(0f, 1f, 0f);
             gl.Translate(0.0f, -133.0f, 94.5f);
             gl.Rotate(-0.0f, -0.0f, -90.0f);
             gl.Scale(30.0f, 30.0f, 30.0f);

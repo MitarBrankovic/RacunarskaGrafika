@@ -1,0 +1,131 @@
+#
+#
+#
+
+
+newmtl block Mesh_motor1
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd motor1.jpg
+
+newmtl bumber Mesh_bumber
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd bumber.jpg
+
+
+
+newmtl kaba Mesh_kaba
+illum 2
+Ka 0.501961 0.501961 0.501961
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd kaba.jpg
+
+newmtl kabi Mesh_kabi
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd kabl.jpg
+
+newmtl kf Mesh_kf
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd kf.jpg
+
+newmtl loescher Mesh_loescher
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd loescher.jpg
+
+newmtl pumpe Mesh_motor1
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd motor1.jpg
+
+newmtl radfv Mesh_radvf
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd rad_vf.jpg
+
+newmtl radhf Mesh_radhf
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd rad_hf.jpg
+
+newmtl radp Mesh_radp
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd rad_p.jpg
+
+newmtl rahmen Mesh_rahmen
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd rahmen.jpg
+
+
+
+newmtl rrad Mesh_rrad
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd rrad.jpg
+
+newmtl tankadds Mesh_tank
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd tank.jpg
+
+newmtl tankmain Mesh_tank
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd tank.jpg
+
+
+
+newmtl verdeck Mesh_verdeck
+illum 2
+Ka 0.500000 0.500000 0.500000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 781.250000
+map_Kd verdeck.jpg
+
