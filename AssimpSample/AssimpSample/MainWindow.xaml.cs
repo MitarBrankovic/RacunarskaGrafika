@@ -168,7 +168,10 @@ namespace AssimpSample
             //Transliranje po Y
             try
             {
-                m_world.RaiseRamp = float.Parse(this.raiseRamp.Text);
+                if(this.raiseRamp.SelectedIndex == 0)
+                    MessageBox.Show("Ovo je 1x");
+
+
             }
             catch
             {

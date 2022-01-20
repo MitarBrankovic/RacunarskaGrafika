@@ -54,6 +54,8 @@ namespace AssimpSample
         private AssimpScene m_scene;
         private AssimpScene m_scene_holder;
 
+        private float[] reflector = new float[] { 0.0f, 0.0f, 0.8f, 1.0f };
+
 
         private uint[] m_textures = new uint[5];
         private string[] m_textureFiles = { "..//..//imgs//bricks.jpg", "..//..//imgs//brick.jpg", "..//..//imgs//asphalt.jpg", "..//..//imgs//whiteAsphalt.jpg", "..//..//imgs//walls.jpg" };
@@ -128,6 +130,19 @@ namespace AssimpSample
             set
             {
                 this.raiseRamp = value;
+            }
+        }
+
+
+        public float[] Reflector
+        {
+            get
+            {
+                return this.reflector;
+            }
+            set
+            {
+                this.reflector = value;
             }
         }
 
@@ -224,9 +239,23 @@ namespace AssimpSample
             gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_POSITION, light0pos);
             gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_SPOT_CUTOFF, 180.0f);      //Tackasto
             gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_AMBIENT, light0ambient);
-            gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_DIFFUSE, light0diffuse); 
+            gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_DIFFUSE, light0diffuse);
+
+
+            //Reflektor
+            float[] light1pos = new float[] { 0.0f, 1000.0f, 120.0f, 1.0f };
+            float[] smer = new float[] { 0.0f, -1.0f, 0.0f };
+
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_POSITION, light1pos);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_AMBIENT, reflector);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_DIFFUSE, reflector);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_CUTOFF, 40.0f);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_EXPONENT, 5.0f);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_DIRECTION, smer);
+
             gl.Enable(OpenGL.GL_LIGHTING);
             gl.Enable(OpenGL.GL_LIGHT0);
+            gl.Enable(OpenGL.GL_LIGHT1);
             gl.Enable(OpenGL.GL_NORMALIZE);
             //I DALJE SVETLOST
 
@@ -349,7 +378,7 @@ namespace AssimpSample
             gl.PushMatrix();
             gl.Translate(0.0f, 0.0f, 120f);
             gl.Begin(OpenGL.GL_QUADS);
-            gl.Normal(0.0f, 1.0f, 0.0f);
+            gl.Normal(0.0f, -1.0f, 0.0f);
             gl.Color(6f, 6f, 5f);
             gl.Vertex(250f, -150f, 220f);
             gl.Vertex(-220f, -150f, 220f);
@@ -360,10 +389,13 @@ namespace AssimpSample
 
             gl.Enable(OpenGL.GL_TEXTURE_2D);
 
-            //prva ulica
             gl.PushMatrix();
-            gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Asphalt]);
             gl.Translate(0.0f, 0.0f, 120f);
+            //prva ulica
+            gl.MatrixMode(OpenGL.GL_TEXTURE);
+            gl.PushMatrix();
+            gl.Scale(12.0f, 1.0f, 0.0f);
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Asphalt]);
             gl.Begin(OpenGL.GL_QUADS);
             gl.Normal(0.0f, 1.0f, 0.0f);
             gl.Color(0.5f, 0.5f, 0.5f);
@@ -377,10 +409,15 @@ namespace AssimpSample
             gl.Vertex(-55f, -149.8f, -220f);  //gore desno
             gl.End();
             gl.PopMatrix();
+            gl.MatrixMode(OpenGL.GL_MODELVIEW);
+            gl.PopMatrix();
 
-
-            //druga ulica
             gl.PushMatrix();
+            gl.Translate(0.0f, 0.0f, 120f);
+            //druga ulica
+            gl.MatrixMode(OpenGL.GL_TEXTURE);
+            gl.PushMatrix();
+            gl.Scale(1.0f, 6.0f, 0.0f);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Asphalt]);
             gl.Translate(0.0f, 0.0f, 120f);
             gl.Begin(OpenGL.GL_QUADS);
@@ -395,6 +432,8 @@ namespace AssimpSample
             gl.TexCoord(0.0f, 1.0f);
             gl.Vertex(93f, -149.8f, -25f);  //gore desno
             gl.End();
+            gl.PopMatrix();
+            gl.MatrixMode(OpenGL.GL_MODELVIEW);
             gl.PopMatrix();
 
             gl.Disable(OpenGL.GL_TEXTURE_2D); 
@@ -418,6 +457,7 @@ namespace AssimpSample
             gl.Scale(58.0f, 15.0f, 1.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
+
 
 
             //levi donji zid
@@ -471,12 +511,15 @@ namespace AssimpSample
 
             // Cube klasa koja nam sluzi za iscvanje zidova
             Cube cube = new Cube();
+            cube.Material = new SharpGL.SceneGraph.Assets.Material();
+            cube.Material.Ambient = Color.Red;
+            cube.Material.Diffuse = Color.Red;
 
             //Sredisnji zid
             gl.PushMatrix();
             gl.Color(1.0f, 1.0f, 1.0f);     //0 0 0.4 plava
-            gl.Translate(140.0f, -78.5f, 120.0f);
-            gl.Scale(50.0f, 60.0f, 110.0f);
+            gl.Translate(150.0f, -78.5f, 130.0f);
+            gl.Scale(40.0f, 60.0f, 100.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
 

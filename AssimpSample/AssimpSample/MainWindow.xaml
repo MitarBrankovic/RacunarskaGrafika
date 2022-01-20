@@ -7,7 +7,11 @@
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="3">
                 <Label>Raise ramp:</Label>
-                <TextBox Width="50" Name="raiseRamp" Text="0.0"></TextBox>
+                <ComboBox Width="50" Name="raiseRamp">
+                    <ComboBoxItem IsSelected="True">1</ComboBoxItem>
+                    <ComboBoxItem >2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                </ComboBox>
                 <Label>Reflector ambient:</Label>
                 <StackPanel Orientation="Horizontal">
                     <TextBox Background="IndianRed" Width="25" Name="txtRed" Text="1.0"></TextBox>
@@ -15,7 +19,11 @@
                     <TextBox Background="SkyBlue" Width="25" Name="txtBlue" Text="0.0"></TextBox>
                 </StackPanel>
                 <Label>Truck scale:</Label>
-                <TextBox Width="50" Name="scaleTruck_txt" Text="1.0"></TextBox>
+                <ComboBox Width="50" Name="scaleTruck_txt">
+                    <ComboBoxItem IsSelected="True">1x</ComboBoxItem>
+                    <ComboBoxItem >0.5x</ComboBoxItem>
+                    <ComboBoxItem>2x</ComboBoxItem>
+                </ComboBox>
 
                 <Button Margin="5 0 5 0" Padding="5 0 5 0" Name="okBtn" Click="OkBtn_Click">OK</Button>
             </StackPanel>
