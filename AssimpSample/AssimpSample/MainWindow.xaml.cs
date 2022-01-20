@@ -168,20 +168,47 @@ namespace AssimpSample
             //Transliranje po Y
             try
             {
-                if(this.raiseRamp.SelectedIndex == 0)
-                    MessageBox.Show("Ovo je 1x");
+                if (this.raiseRamp.SelectedIndex == 0)
+                {
+                    //MessageBox.Show("Ovo je 1x");
+                    m_world.RaiseRamp = 1;
+                }
+                else if (this.raiseRamp.SelectedIndex == 1) 
+                {
+                    //MessageBox.Show("Ovo je 2x");
+                    m_world.RaiseRamp = 2;
+                }
+                else if (this.raiseRamp.SelectedIndex == 2)
+                {
+                    //MessageBox.Show("Ovo je 3x");
+                    m_world.RaiseRamp = 3;
+                }
 
 
             }
             catch
             {
-                MessageBox.Show("Translation must be a number!");
+                MessageBox.Show("Greska kod rampe!");
             }
 
             //Skaliranje strelica
             try
             {
-                m_world.ScaleTruck = double.Parse(this.scaleTruck_txt.Text);
+                if (this.scaleTruck_txt.SelectedIndex == 0)
+                {
+                    //MessageBox.Show("Ovo je 1x");
+                    m_world.ScaleTruck = 1;
+                }
+                else if (this.scaleTruck_txt.SelectedIndex == 1)
+                {
+                    //MessageBox.Show("Ovo je 2x");
+                    m_world.ScaleTruck = 2;
+                }
+                else if (this.scaleTruck_txt.SelectedIndex == 2)
+                {
+                    //MessageBox.Show("Ovo je 0.5x");
+                    m_world.ScaleTruck = 0.5;
+                }
             }
             catch
             {

@@ -21,8 +21,8 @@
                 <Label>Truck scale:</Label>
                 <ComboBox Width="50" Name="scaleTruck_txt">
                     <ComboBoxItem IsSelected="True">1x</ComboBoxItem>
-                    <ComboBoxItem >0.5x</ComboBoxItem>
-                    <ComboBoxItem>2x</ComboBoxItem>
+                    <ComboBoxItem >2x</ComboBoxItem>
+                    <ComboBoxItem>0.5x</ComboBoxItem>
                 </ComboBox>
 
                 <Button Margin="5 0 5 0" Padding="5 0 5 0" Name="okBtn" Click="OkBtn_Click">OK</Button>

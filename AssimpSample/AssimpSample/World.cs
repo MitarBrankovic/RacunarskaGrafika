@@ -347,7 +347,7 @@ namespace AssimpSample
             gl.PushMatrix();
             gl.Translate(-80f, -149.8f, -20f);
             gl.Rotate(2.0f, 20.0f, 0.0f);
-            gl.Scale(0.06f, 0.06f, 0.06f);
+            gl.Scale(0.06f * scaleTruck, 0.06f * scaleTruck, 0.06f * scaleTruck);
             //gl.Rotate(m_xRotation, 0.0f, 50.0f, 0.0f);
             gl.FrontFace(OpenGL.GL_CW);
             m_scene_holder.Draw();
@@ -550,8 +550,20 @@ namespace AssimpSample
 
             gl.PushMatrix();
             gl.Normal(0f, 1f, 0f);
-            gl.Translate(0.0f, -133.0f, 94.5f);
-            gl.Rotate(-0.0f, -0.0f, -90.0f);
+            gl.Translate(0.0f, -133.0f, 89.0f);
+
+            if (raiseRamp == 1)
+            {
+                gl.Rotate(-0.0f, -0.0f, 0.0f);
+            }
+            else if (raiseRamp == 2) 
+            {
+                gl.Rotate(-40.0f, -0.0f, 0.0f);
+            }
+            else if(raiseRamp == 3)
+            {
+                gl.Rotate(-80.0f, -0.0f, 0.0f);
+            }
             gl.Scale(30.0f, 30.0f, 30.0f);
             precka.CreateInContext(gl);
 
