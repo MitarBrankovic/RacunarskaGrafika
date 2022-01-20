@@ -5,7 +5,21 @@
         xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
     <Grid>
         <DockPanel>
-        <!-- The OpenGL control provides a OpenGL drawing surface. -->
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="3">
+                <Label>Raise ramp:</Label>
+                <TextBox Width="50" Name="raiseRamp" Text="0.0"></TextBox>
+                <Label>Reflector ambient:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Background="IndianRed" Width="25" Name="txtRed" Text="1.0"></TextBox>
+                    <TextBox Background="LightGreen" Width="25" Name="txtGreen" Text="0.0"></TextBox>
+                    <TextBox Background="SkyBlue" Width="25" Name="txtBlue" Text="0.0"></TextBox>
+                </StackPanel>
+                <Label>Truck scale:</Label>
+                <TextBox Width="50" Name="scaleTruck_txt" Text="1.0"></TextBox>
+
+                <Button Margin="5 0 5 0" Padding="5 0 5 0" Name="okBtn" Click="OkBtn_Click">OK</Button>
+            </StackPanel>
+            <!-- The OpenGL control provides a OpenGL drawing surface. -->
         
         
             <!-- The OpenGL control provides a OpenGL drawing surface. -->

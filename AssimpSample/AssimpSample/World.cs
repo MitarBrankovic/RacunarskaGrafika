@@ -60,6 +60,11 @@ namespace AssimpSample
         private enum TextureObjects { Bricks = 0, Brick, Asphalt, WhiteAsphalt, Walls};
         private readonly int m_textureCount = Enum.GetNames(typeof(TextureObjects)).Length;
 
+        private float raiseRamp = 0.0f;
+        private double scaleTruck = 1;
+
+
+
         /// <summary>
         ///	 Ugao rotacije sveta oko X ose.
         /// </summary>
@@ -85,6 +90,8 @@ namespace AssimpSample
         /// </summary>
         private int m_height;
 
+
+
         public int Interakcija { get; set; }
 
         #endregion Atributi
@@ -104,6 +111,24 @@ namespace AssimpSample
         {
             get { return m_scene_holder; }
             set { m_scene_holder = value; }
+        }
+
+        public double ScaleTruck
+        {
+            get { return this.scaleTruck; }
+            set { this.scaleTruck = value; }
+        }
+
+        public float RaiseRamp
+        {
+            get
+            {
+                return this.raiseRamp;
+            }
+            set
+            {
+                this.raiseRamp = value;
+            }
         }
 
         /// <summary>

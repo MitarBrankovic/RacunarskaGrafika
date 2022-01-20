@@ -91,32 +91,31 @@ namespace AssimpSample
         {
             switch (e.Key)
             {
-                case Key.F10: this.Close(); break;
-                case Key.W: m_world.RotationX -= 5.0f; break;
-                case Key.S: m_world.RotationX += 5.0f; break;
-                case Key.A: m_world.RotationY -= 5.0f; break;
-                case Key.D: m_world.RotationY += 5.0f; break;
-                case Key.Add: m_world.SceneDistance -= 700.0f; break;
-                case Key.Subtract: m_world.SceneDistance += 700.0f; break;
-                case Key.F2:
-                    OpenFileDialog opfModel = new OpenFileDialog();
-                    bool result = (bool) opfModel.ShowDialog();
-                    if (result)
-
+                case Key.Q: this.Close(); break;
+                case Key.I:
+                    if (m_world.RotationX < -15)
                     {
-                        try
-                        {
-                            World newWorld = new World(Directory.GetParent(opfModel.FileName).ToString(), Path.GetFileName(opfModel.FileName), (int)openGLControl.Width, (int)openGLControl.Height, openGLControl.OpenGL);
-                            m_world.Dispose();
-                            m_world = newWorld;
-                            m_world.Initialize(openGLControl.OpenGL);
-                        }
-                        catch (Exception exp)
-                        {
-                            MessageBox.Show("Neuspesno kreirana instanca OpenGL sveta:\n" + exp.Message, "GRESKA", MessageBoxButton.OK );
-                        }
+                        break;
+                    }
+                    else
+                    {
+                        m_world.RotationX -= 5.0f;
+                    } 
+                    break;
+                case Key.K:
+                    if (m_world.RotationX > 65)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        m_world.RotationX += 5.0f;
                     }
                     break;
+                case Key.J: m_world.RotationY -= 5.0f; break;
+                case Key.L: m_world.RotationY += 5.0f; break;
+                case Key.Add: m_world.SceneDistance -= 80.0f; break;
+                case Key.Subtract: m_world.SceneDistance += 80.0f; break;            
             }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -124,6 +123,68 @@ namespace AssimpSample
             
 
         }
-        
+
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Reflektor ambijentalno
+            /*try
+            {
+                float red = float.Parse(this.txtRed.Text);
+                if (red < 0.0f || red > 1.0f)
+                {
+                    MessageBox.Show("Value RED must be a number between 0.0 and 1.0!");
+                }
+                else
+                {
+                    m_world.ReflectorAmbientRed = red;
+                }
+
+                float green = float.Parse(this.txtGreen.Text);
+                if (green < 0.0f || green > 1.0f)
+                {
+                    MessageBox.Show("Value GREEN must be a number between 0.0 and 1.0!");
+                }
+                else
+                {
+                    m_world.ReflectorAmbientGreen = green;
+                }
+
+                float blue = float.Parse(this.txtBlue.Text);
+                if (blue < 0.0f || blue > 1.0f)
+                {
+                    MessageBox.Show("Value BLUE must be a number between 0.0 and 1.0!");
+                }
+                else
+                {
+                    m_world.ReflectorAmbientBlue = blue;
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Value of RED, GREEN and BLUE must be a number between 0.0 and 1.0!");
+            }*/
+
+            //Transliranje po Y
+            try
+            {
+                m_world.RaiseRamp = float.Parse(this.raiseRamp.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Translation must be a number!");
+            }
+
+            //Skaliranje strelica
+            try
+            {
+                m_world.ScaleTruck = double.Parse(this.scaleTruck_txt.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Scaling must be a number!");
+            }
+        }
+
     }
 }
