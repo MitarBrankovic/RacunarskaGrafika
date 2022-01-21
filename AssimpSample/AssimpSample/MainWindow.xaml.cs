@@ -142,43 +142,46 @@ namespace AssimpSample
         private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
             //Reflektor ambijentalno
-            /*try
+            try
             {
-                float red = float.Parse(this.txtRed.Text);
+                float red = float.Parse(this.txtRed.Text) / 10;
                 if (red < 0.0f || red > 1.0f)
                 {
-                    MessageBox.Show("Value RED must be a number between 0.0 and 1.0!");
+                    MessageBox.Show("Vrednost crvenog polja mora biti izmedju 0.0 i 1.0!");
                 }
                 else
                 {
-                    m_world.ReflectorAmbientRed = red;
+                    float value = (float)red;
+                    m_world.reflectorR = red;
                 }
 
-                float green = float.Parse(this.txtGreen.Text);
+                float green = float.Parse(this.txtGreen.Text) / 10;
                 if (green < 0.0f || green > 1.0f)
                 {
-                    MessageBox.Show("Value GREEN must be a number between 0.0 and 1.0!");
+                    MessageBox.Show("Vrednost zelenog polja mora biti izmedju 0.0 i 1.0!");
                 }
                 else
                 {
-                    m_world.ReflectorAmbientGreen = green;
+                    float value = (float)green;
+                    m_world.reflectorG = green;
                 }
 
-                float blue = float.Parse(this.txtBlue.Text);
+                float blue = float.Parse(this.txtBlue.Text) / 10;
                 if (blue < 0.0f || blue > 1.0f)
                 {
-                    MessageBox.Show("Value BLUE must be a number between 0.0 and 1.0!");
+                    MessageBox.Show("Vrednost plavog polja mora biti izmedju 0.0 i 1.0!");
                 }
                 else
                 {
-                    m_world.ReflectorAmbientBlue = blue;
+                    float value = (float)blue;
+                    m_world.reflectorB = blue;
                 }
 
             }
             catch
             {
                 MessageBox.Show("Value of RED, GREEN and BLUE must be a number between 0.0 and 1.0!");
-            }*/
+            }
 
             //Transliranje po Y
             try

@@ -54,6 +54,9 @@ namespace AssimpSample
         private AssimpScene m_scene;
         private AssimpScene m_scene_holder;
 
+        public float reflectorR = 0.0f;
+        public float reflectorG = 0.0f;
+        public float reflectorB = 0.8f;
         private float[] reflector = new float[] { 0.0f, 0.0f, 0.8f, 1.0f };
 
         //TEKSTURE
@@ -256,23 +259,10 @@ namespace AssimpSample
             gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_AMBIENT, light0ambient);
             gl.Light(OpenGL.GL_LIGHT0, OpenGL.GL_DIFFUSE, light0diffuse);
 
-
-            //Reflektor
-            float[] light1pos = new float[] { 0.0f, 1000.0f, 120.0f, 1.0f };
-            float[] smer = new float[] { 0.0f, -1.0f, 0.0f };
-
-            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_POSITION, light1pos);
-            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_AMBIENT, reflector);
-            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_DIFFUSE, reflector);
-            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_CUTOFF, 40.0f);
-            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_EXPONENT, 5.0f);
-            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_DIRECTION, smer);
-
             gl.Enable(OpenGL.GL_LIGHTING);
             gl.Enable(OpenGL.GL_LIGHT0);
-            gl.Enable(OpenGL.GL_LIGHT1);
             gl.Enable(OpenGL.GL_NORMALIZE);
-            //I DALJE SVETLOST
+
 
             //TEKSTURE
             gl.Enable(OpenGL.GL_TEXTURE_2D);
@@ -321,9 +311,6 @@ namespace AssimpSample
 
 
 
-
-
-
         /// <summary>
         ///  Iscrtavanje OpenGL kontrole.
         /// </summary>
@@ -346,6 +333,7 @@ namespace AssimpSample
             //m_scene.Draw();
             gl.PopMatrix();
             DrawBase(gl);
+            DrawReflectorLight(gl);
             DrawHolder(gl);
             DrawConstruction(gl);
             DrawWalls(gl);
@@ -356,6 +344,21 @@ namespace AssimpSample
             gl.Flush();
         }
 
+        public void DrawReflectorLight(OpenGL gl) 
+        {
+            float[] light1pos = new float[] { 0.0f, 2.0f, 120.0f, 1.0f };
+            float[] smer = new float[] { 0.0f, -1.0f, 0.0f };
+            float[] boja = new float[] { reflectorR, reflectorG, reflectorB, 1.0f };
+
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_POSITION, light1pos);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_AMBIENT, boja);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_DIFFUSE, boja);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_CUTOFF, 40.0f);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_EXPONENT, 5.0f);
+            gl.Light(OpenGL.GL_LIGHT1, OpenGL.GL_SPOT_DIRECTION, smer);
+
+            gl.Enable(OpenGL.GL_LIGHT1);
+        }
 
         public void DrawHolder(OpenGL gl)
         {

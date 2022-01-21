@@ -14,9 +14,9 @@
                 </ComboBox>
                 <Label>Reflector ambient:</Label>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Background="IndianRed" Width="25" Name="txtRed" Text="1.0"></TextBox>
+                    <TextBox Background="IndianRed" Width="25" Name="txtRed" Text="0.0"></TextBox>
                     <TextBox Background="LightGreen" Width="25" Name="txtGreen" Text="0.0"></TextBox>
-                    <TextBox Background="SkyBlue" Width="25" Name="txtBlue" Text="0.0"></TextBox>
+                    <TextBox Background="SkyBlue" Width="25" Name="txtBlue" Text="0.8"></TextBox>
                 </StackPanel>
                 <Label>Truck scale:</Label>
                 <ComboBox Width="50" Name="scaleTruck_txt">
