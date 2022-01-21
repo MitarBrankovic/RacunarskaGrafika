@@ -89,6 +89,9 @@ namespace AssimpSample
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            this.okBtn.IsEnabled = true;
+
+
             switch (e.Key)
             {
                 case Key.Q: this.Close(); break;
@@ -115,7 +118,19 @@ namespace AssimpSample
                 case Key.J: m_world.RotationY -= 5.0f; break;
                 case Key.L: m_world.RotationY += 5.0f; break;
                 case Key.Add: m_world.SceneDistance -= 80.0f; break;
-                case Key.Subtract: m_world.SceneDistance += 80.0f; break;            
+                case Key.Subtract: m_world.SceneDistance += 80.0f; break;
+                case Key.C:
+                    m_world.truckTranslateX = -80f;
+                    m_world.truckTranslateY = -149.8f;
+                    m_world.truckTranslateZ = -20f;
+                    m_world.truckRotationX = 2.0f;
+                    m_world.truckRotationY = 20.0f;
+                    m_world.truckRotationZ = 0.0f;
+                    m_world.RaiseRamp = 1;
+
+                    m_world.Animation();
+                    this.okBtn.IsEnabled = false;
+                    break;
             }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)

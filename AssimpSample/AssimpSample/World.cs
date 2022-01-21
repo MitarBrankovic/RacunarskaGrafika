@@ -56,16 +56,31 @@ namespace AssimpSample
 
         private float[] reflector = new float[] { 0.0f, 0.0f, 0.8f, 1.0f };
 
-
+        //TEKSTURE
         private uint[] m_textures = new uint[5];
         private string[] m_textureFiles = { "..//..//imgs//bricks.jpg", "..//..//imgs//brick.jpg", "..//..//imgs//asphalt.jpg", "..//..//imgs//whiteAsphalt.jpg", "..//..//imgs//walls.jpg" };
         private enum TextureObjects { Bricks = 0, Brick, Asphalt, WhiteAsphalt, Walls};
         private readonly int m_textureCount = Enum.GetNames(typeof(TextureObjects)).Length;
 
+        //TOOLBAR
         private float raiseRamp = 0.0f;
         private double scaleTruck = 1;
 
+        //ANIMACIJA
+        private bool animationInProgress = false;
+        private DispatcherTimer timer1;
+        private DispatcherTimer timer2;
+        private DispatcherTimer timer3;
+        private DispatcherTimer timer4;
+        private DispatcherTimer timer5;
 
+        public double truckTranslateX = -80f;
+        public double truckTranslateY = -149.8f;
+        public double truckTranslateZ = -20f;
+
+        public float truckRotationX = 2.0f;
+        public float truckRotationY = 20.0f;   //20
+        public float truckRotationZ = 0.0f;
 
         /// <summary>
         ///	 Ugao rotacije sveta oko X ose.
@@ -345,8 +360,8 @@ namespace AssimpSample
         public void DrawHolder(OpenGL gl)
         {
             gl.PushMatrix();
-            gl.Translate(-80f, -149.8f, -20f);
-            gl.Rotate(2.0f, 20.0f, 0.0f);
+            gl.Translate(truckTranslateX, truckTranslateY, truckTranslateZ);
+            gl.Rotate(truckRotationX, truckRotationY, truckRotationZ);
             gl.Scale(0.06f * scaleTruck, 0.06f * scaleTruck, 0.06f * scaleTruck);
             //gl.Rotate(m_xRotation, 0.0f, 50.0f, 0.0f);
             gl.FrontFace(OpenGL.GL_CW);
@@ -577,7 +592,55 @@ namespace AssimpSample
             gl.PopMatrix();
         }
 
+        public void Animation()
+        {
+            this.animationInProgress = true;
+            timer1 = new DispatcherTimer();
+            timer1.Interval = TimeSpan.FromMilliseconds(50);
+            timer1.Tick += new EventHandler(FirstStreet);
+            timer1.Start();
+        }
 
+        public void FirstStreet(object sender, EventArgs e)
+        {
+            if (truckTranslateZ < 120)
+            {
+                truckTranslateZ += 20f;
+            }
+            else
+            {
+                truckRotationY = 105.0f;
+                Animation2();
+                timer1.Stop();
+
+            }
+        }
+
+        public void SecondStreet(object sender, EventArgs e)
+        {
+            if (truckTranslateX < -20 && truckTranslateX > -35)
+            {
+                raiseRamp = 3;
+                truckTranslateX += 10f;
+            }
+            else if (truckTranslateX < 85)
+            {
+                truckTranslateX += 10f;
+            }
+            else
+            {
+                //Animation2();
+                timer2.Stop();
+            }
+        }
+
+        public void Animation2()
+        {
+            timer2 = new DispatcherTimer();
+            timer2.Interval = TimeSpan.FromMilliseconds(1);
+            timer2.Tick += new EventHandler(SecondStreet);
+            timer2.Start();
+        }
 
 
         /// <summary>
