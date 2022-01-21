@@ -60,9 +60,9 @@ namespace AssimpSample
         private float[] reflector = new float[] { 0.0f, 0.0f, 0.8f, 1.0f };
 
         //TEKSTURE
-        private uint[] m_textures = new uint[5];
-        private string[] m_textureFiles = { "..//..//imgs//bricks.jpg", "..//..//imgs//brick.jpg", "..//..//imgs//asphalt.jpg", "..//..//imgs//whiteAsphalt.jpg", "..//..//imgs//walls.jpg" };
-        private enum TextureObjects { Bricks = 0, Brick, Asphalt, WhiteAsphalt, Walls};
+        private uint[] m_textures = new uint[6];
+        private string[] m_textureFiles = { "..//..//imgs//bricks.jpg", "..//..//imgs//brick.jpg", "..//..//imgs//asphalt.jpg", "..//..//imgs//whiteAsphalt.jpg", "..//..//imgs//walls.jpg", "..//..//imgs//grass.jpg" };
+        private enum TextureObjects { Bricks = 0, Brick, Asphalt, WhiteAsphalt, Walls, Grass};
         private readonly int m_textureCount = Enum.GetNames(typeof(TextureObjects)).Length;
 
         //TOOLBAR
@@ -398,20 +398,33 @@ namespace AssimpSample
 
         public void DrawBase(OpenGL gl)
         {
+            gl.Enable(OpenGL.GL_TEXTURE_2D);
             gl.FrontFace(OpenGL.GL_CCW);
-            //podloga
+
             gl.PushMatrix();
             gl.Translate(0.0f, 0.0f, 120f);
+            gl.MatrixMode(OpenGL.GL_TEXTURE);
+            //podloga
+            gl.PushMatrix();
+            gl.Scale(5.0f, 1.0f, 5.0f);
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, m_textures[(int)TextureObjects.Grass]);
             gl.Begin(OpenGL.GL_QUADS);
             gl.Normal(0.0f, -1.0f, 0.0f);
             gl.Color(6f, 6f, 5f);
+            gl.TexCoord(1.0f, 1.0f);
             gl.Vertex(250f, -150f, 220f);
+            gl.TexCoord(1.0f, 0.0f);
             gl.Vertex(-220f, -150f, 220f);
+            gl.TexCoord(0.0f, 0.0f);
             gl.Vertex(-220f, -150f, -220f);
+            gl.TexCoord(0.0f, 1.0f);
             gl.Vertex(250f, -150f, -220f);
             gl.End();
             gl.PopMatrix();
+            gl.MatrixMode(OpenGL.GL_MODELVIEW);
+            gl.PopMatrix();
 
+            gl.Disable(OpenGL.GL_TEXTURE_2D);
 
 
             //PLATFORMA
@@ -419,14 +432,12 @@ namespace AssimpSample
 
             gl.PushMatrix();
             gl.Normal(1f, 0f, 0f);
-            gl.Color(0.0f, 1.0f, 1.0f);
+            gl.Color(0.0f, 1.0f, 1.0f, 0.0f);
             gl.Translate(88.0f, -149.5f, 55.0f);
             gl.Rotate(0.0f, 0.0f, 0.0f);
             gl.Scale(25.0f, 0.0f, 40.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
-
-
 
 
             gl.Enable(OpenGL.GL_TEXTURE_2D);
@@ -454,6 +465,7 @@ namespace AssimpSample
             gl.MatrixMode(OpenGL.GL_MODELVIEW);
             gl.PopMatrix();
 
+
             gl.PushMatrix();
             gl.Translate(0.0f, 0.0f, 120f);
             //druga ulica
@@ -466,13 +478,13 @@ namespace AssimpSample
             gl.Normal(0.0f, 1.0f, 0.0f);
             gl.Color(0.5f, 0.5f, 0.5f);
             gl.TexCoord(1.0f, 1.0f);
-            gl.Vertex(93f, -149.8f, 30f);   //dole desno
+            gl.Vertex(113f, -149.8f, 30f);   //dole desno
             gl.TexCoord(1.0f, 0.0f);
             gl.Vertex(-55f, -149.8f, 30f);    //dole levo
             gl.TexCoord(0.0f, 0.0f);
             gl.Vertex(-55f, -149.8f, -25f); //gore levo
             gl.TexCoord(0.0f, 1.0f);
-            gl.Vertex(93f, -149.8f, -25f);  //gore desno
+            gl.Vertex(113f, -149.8f, -25f);  //gore desno
             gl.End();
             gl.PopMatrix();
             gl.MatrixMode(OpenGL.GL_MODELVIEW);

@@ -34,7 +34,7 @@
             <sharpGL:OpenGLControl 
             Name="openGLControl" OpenGLDraw="openGLControl_OpenGLDraw" 
             OpenGLInitialized="openGLControl_OpenGLInitialized" Resized="openGLControl_Resized"
-            DrawFPS="True" RenderContextType="FBO" FrameRate="60"/>
+            DrawFPS="True" RenderContextType="FBO" FrameRate="50"/>
             </DockPanel>
     </Grid>
 </Window>
