@@ -120,6 +120,20 @@ namespace AssimpSample
                 case Key.Add: m_world.SceneDistance -= 80.0f; break;
                 case Key.Subtract: m_world.SceneDistance += 80.0f; break;
                 case Key.C:
+                    m_world.animationChecker = 0;
+                    m_world.truckTranslateX = -80f;
+                    m_world.truckTranslateY = -149.8f;
+                    m_world.truckTranslateZ = -20f;
+                    m_world.truckRotationX = 2.0f;
+                    m_world.truckRotationY = 20.0f;
+                    m_world.truckRotationZ = 0.0f;
+                    m_world.RaiseRamp = 1;
+
+                    m_world.Animation();
+                    this.okBtn.IsEnabled = false;
+                    break;
+                case Key.V:
+                    m_world.animationChecker = 1;
                     m_world.truckTranslateX = -80f;
                     m_world.truckTranslateY = -149.8f;
                     m_world.truckTranslateZ = -20f;

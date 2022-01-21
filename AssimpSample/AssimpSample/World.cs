@@ -71,11 +71,14 @@ namespace AssimpSample
 
         //ANIMACIJA
         private bool animationInProgress = false;
+        public int animationChecker = 0;
         private DispatcherTimer timer1;
         private DispatcherTimer timer2;
+        private DispatcherTimer timer21;
         private DispatcherTimer timer3;
         private DispatcherTimer timer4;
         private DispatcherTimer timer5;
+        private bool boxChecker = false;
 
         public double truckTranslateX = -80f;
         public double truckTranslateY = -149.8f;
@@ -340,6 +343,9 @@ namespace AssimpSample
             DrawWalls(gl);
             DrawRamp(gl);
             DrawText(gl);
+            if(boxChecker)
+                DrawBox(gl);
+
             gl.PopMatrix();
             // Oznaci kraj iscrtavanja
             gl.Flush();
@@ -553,13 +559,28 @@ namespace AssimpSample
 
             //Sredisnji zid
             gl.PushMatrix();
-            gl.Color(1.0f, 1.0f, 1.0f);     //0 0 0.4 plava
+            gl.Color(1.0f, 1.0f, 1.0f);
             gl.Translate(150.0f, -78.5f, 130.0f);
             gl.Scale(40.0f, 60.0f, 100.0f);
             cube.Render(gl, RenderMode.Render);
             gl.PopMatrix();
 
             gl.Disable(OpenGL.GL_TEXTURE_2D);
+        }
+
+
+        public void DrawBox(OpenGL gl)
+        {
+            // Cube klasa koja nam sluzi za iscvanje zidova
+            Cube cube = new Cube();
+
+            //Sredisnji zid
+            gl.PushMatrix();
+            gl.Color(1.0f, 1.0f, 1.0f);
+            gl.Translate(250.0f, -78.5f, 130.0f);
+            gl.Scale(100.0f, 100.0f, 200.0f);
+            cube.Render(gl, RenderMode.Render);
+            gl.PopMatrix();
         }
 
         public void DrawRamp(OpenGL gl)
@@ -615,6 +636,8 @@ namespace AssimpSample
 
         public void Animation()
         {
+            this.boxChecker = false;
+
             this.animationInProgress = true;
             timer1 = new DispatcherTimer();
             timer1.Interval = TimeSpan.FromMilliseconds(50);
@@ -631,7 +654,14 @@ namespace AssimpSample
             else
             {
                 truckRotationY = 105.0f;
-                Animation2();
+                if (animationChecker == 0)
+                {
+                    Animation2();
+                }
+                else if (animationChecker == 1)
+                {
+                    Animation3();
+                }
                 timer1.Stop();
 
             }
@@ -650,7 +680,7 @@ namespace AssimpSample
             }
             else
             {
-                //Animation2();
+                Animation2_1();
                 timer2.Stop();
             }
         }
@@ -661,6 +691,113 @@ namespace AssimpSample
             timer2.Interval = TimeSpan.FromMilliseconds(1);
             timer2.Tick += new EventHandler(SecondStreet);
             timer2.Start();
+        }
+
+        public void Parking(object sender, EventArgs e)
+        {
+            if (truckTranslateZ > 80)
+            {
+                raiseRamp = 1;
+                truckRotationY = 20f;
+                truckTranslateZ -= 10f;
+            }
+            else
+            {
+                timer21.Stop();
+            }
+        }
+
+        public void Animation2_1()
+        {
+            timer21 = new DispatcherTimer();
+            timer21.Interval = TimeSpan.FromMilliseconds(1);
+            timer21.Tick += new EventHandler(Parking);
+            timer21.Start();
+        }
+
+
+        public void GoingBack(object sender, EventArgs e) //druga ulica pre rampe
+        {
+            if (truckTranslateX < -20 && truckTranslateX > -35)
+            {
+                raiseRamp = 1;
+
+                //ove dve linije su za anim3
+                timer3.Stop();
+                Animation4();
+            }
+            else if (truckTranslateX < -20)
+            {
+                truckTranslateX += 10f;
+            }
+            else
+            {
+                Animation4();
+                timer3.Stop();
+            }
+        }
+
+        public void Animation3()
+        {
+            timer3 = new DispatcherTimer();
+            timer3.Interval = TimeSpan.FromMilliseconds(1);
+            timer3.Tick += new EventHandler(GoingBack);
+            timer3.Start();
+        }
+
+        public void GoingBack2(object sender, EventArgs e)  //druga ulica posle rampe
+        {
+            if (truckTranslateX < -20 && truckTranslateX > -35)
+            {
+                raiseRamp = 1;
+                truckRotationY = 285.0f;
+                truckTranslateX -= 10f;
+            }
+            else if (truckTranslateX > -80)
+            {
+                truckTranslateX -= 10f;
+            }
+            else
+            {
+
+                Animation5();
+                timer4.Stop();
+
+            }
+        }
+
+        public void Animation4()
+        {
+            timer4 = new DispatcherTimer();
+            timer4.Interval = TimeSpan.FromMilliseconds(250);
+            timer4.Tick += new EventHandler(GoingBack2);
+            timer4.Start();
+        }
+
+        public void GoingBack3(object sender, EventArgs e)  //prva ulica
+        {
+            if (truckTranslateZ > -35)
+            {
+                truckRotationY = 200;
+                truckTranslateZ -= 20f;
+            }
+            else if (truckTranslateX > -80)
+            {
+                truckTranslateX -= 10f;
+            }
+            else
+            {
+                timer5.Stop();
+
+            }
+        }
+
+        public void Animation5()
+        {
+            timer5 = new DispatcherTimer();
+            timer5.Interval = TimeSpan.FromMilliseconds(1);
+            timer5.Tick += new EventHandler(GoingBack3);
+            timer5.Start();
         }
 
 

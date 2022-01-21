@@ -152,6 +152,7 @@
     <None Include="Dependencies\SharpGL.WPF.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="imgs\grass.jpg" />
     <None Include="3D Models\Truck2\bumber.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
