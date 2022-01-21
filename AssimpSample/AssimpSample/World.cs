@@ -246,6 +246,7 @@ namespace AssimpSample
             gl.ShadeModel(OpenGL.GL_FLAT);
             gl.Enable(OpenGL.GL_CULL_FACE);
             gl.Enable(OpenGL.GL_DEPTH_TEST);
+            gl.CullFace(OpenGL.GL_FRONT);
 
             //TACKASTA SVETLOST
             gl.Enable(OpenGL.GL_COLOR_MATERIAL);
@@ -346,7 +347,7 @@ namespace AssimpSample
 
         public void DrawReflectorLight(OpenGL gl) 
         {
-            float[] light1pos = new float[] { 0.0f, 2.0f, 120.0f, 1.0f };
+            float[] light1pos = new float[] { 80.0f, 2.0f, 95.0f, 1.0f };
             float[] smer = new float[] { 0.0f, -1.0f, 0.0f };
             float[] boja = new float[] { reflectorR, reflectorG, reflectorB, 1.0f };
 
@@ -391,7 +392,7 @@ namespace AssimpSample
 
         public void DrawBase(OpenGL gl)
         {
-
+            gl.FrontFace(OpenGL.GL_CCW);
             //podloga
             gl.PushMatrix();
             gl.Translate(0.0f, 0.0f, 120f);
@@ -404,6 +405,23 @@ namespace AssimpSample
             gl.Vertex(250f, -150f, -220f);
             gl.End();
             gl.PopMatrix();
+
+
+
+            //PLATFORMA
+            Cube cube = new Cube();
+
+            gl.PushMatrix();
+            gl.Normal(1f, 0f, 0f);
+            gl.Color(0.0f, 1.0f, 1.0f);
+            gl.Translate(88.0f, -149.5f, 55.0f);
+            gl.Rotate(0.0f, 0.0f, 0.0f);
+            gl.Scale(25.0f, 0.0f, 40.0f);
+            cube.Render(gl, RenderMode.Render);
+            gl.PopMatrix();
+
+
+
 
             gl.Enable(OpenGL.GL_TEXTURE_2D);
 
